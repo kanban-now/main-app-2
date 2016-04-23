@@ -6,6 +6,6 @@ angular.module('dashboardApp')
       .state('archivedcards', {
         url: '/archivedcards',
         templateUrl: 'app/archivedcards/archivedcards.html',
-        controller: 'ArchivedcardsCtrl'
+        controller: 'tableController'
       });
   });

@@ -4,6 +4,7 @@ angular.module('dashboardApp', [
   'ngCookies',
   'ngResource',
   'ngSanitize',
+  'ngTable',
   'ui.router',
   'stormpath',
   'stormpath.templates'

@@ -1,3 +1,36 @@
-<div class="col-md-12">
-This is the archivedcards view.
+<!--<div class="col-md-12">-->
+<!--This is the archivedcards view.-->
+<!--</div>-->
+
+
+
+
+<div ng-include="'components/navbar/navbar.html'"></div>
+
+<div ng-controller="tableController">
+    <table ng-table="usersTable" id="archivedCards" class="table table-striped">
+        <tr><th>Card text</th><th>Board Id</th><th>Archived Date</th></tr>
+        <tr ng-repeat="card in data">
+            <td>{{card.text}}</td>
+            <td>{{card.boardId}}</td>
+            <td>{{card.date}}</td>
+        </tr>
+    </table>
 </div>
+
+
+<!--<div class="container">-->
+    <!--<div class="row">-->
+        <!--<div class="col-xs-12">-->
+            <!--<h3>My Profile</h3>-->
+            <!--<hr>-->
+        <!--</div>-->
+
+    <!--</div>-->
+
+    <!--<div class="row">-->
+        <!--<div class="col-xs-12">-->
+            <!--<pre ng-bind="user | json"></pre>-->
+        <!--</div>-->
+    <!--</div>-->
+<!--</div>-->
