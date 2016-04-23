@@ -1,0 +1,38 @@
+
+repositories {
+    mavenLocal()
+    mavenCentral()
+}
+
+
+task writeCloudFoundryManifest(type: Copy) {
+    from 'cloud-foundry'
+    into "dist"
+    include 'manifest.yml.template'
+    rename { file -> 'manifest.yml' }
+    expand([
+            stormpath_apiKey_id: "$System.env.stormpath_apiKey_id",
+            stormpath_apiKey_secret: "$System.env.stormpath_apiKey_secret",
+            stormpath_application_href: "$System.env.stormpath_application_href",
+            deployment_environment: "$System.env.deployment_environment",
+            security_user_password: "$System.env.security_user_password"
+    ])
+}
+
+task cfPush(dependsOn:[], type:Exec){
+    commandLine "cf","push","-f","dist/manifest.yml"
+}
+
+task setCloudFoundryApi(dependsOn:[], type:Exec){
+    commandLine "cf","api","https://api.run.pivotal.io"
+}
+
+task loginToCloudFoundry(dependsOn:[setCloudFoundryApi], type:Exec){
+    commandLine "cf","auth","$System.env.CF_USER" ,"$System.env.CF_PASS"
+}
+
+
+task targetCloudFoundrySpace(dependsOn:[loginToCloudFoundry], type:Exec){
+    commandLine "cf","target","-o", "$System.env.CF_ORG", "-s", "$System.env.CF_SPACE"
+}
+

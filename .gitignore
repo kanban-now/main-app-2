@@ -42,3 +42,11 @@ public
 client/bower_components
 dist
 /server/config/local.env.js
+
+build
+.gradle
+.idea
+*.iml
+*.ipr
+*.iws
+target
