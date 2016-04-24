@@ -9,37 +9,40 @@
 
 'use strict';
 
+var request = require('request')
 var _ = require('lodash');
 
-// Get list of things
-exports.index = function(req, res) {
-  if(req.param('pageNumber') === '1' )
-{
-  res.json([
-    {"boardId": 6, "date": "2016-01-20T02:48:43.331Z", "id": 57, "text": "Item 1"},
-    {"boardId": 6, "date": "2016-01-20T02:48:43.331Z", "id": 57, "text": "Item 2"},
-    {"boardId": 6, "date": "2016-01-20T02:48:43.331Z", "id": 57, "text": "Item 3"},
-    {"boardId": 6, "date": "2016-01-20T02:48:43.331Z", "id": 57, "text": "Item 4"},
-    {"boardId": 6, "date": "2016-01-20T02:48:43.331Z", "id": 57, "text": "Item 5"},
-    {"boardId": 6, "date": "2016-01-20T02:48:43.331Z", "id": 57, "text": "Item 6"},
-    {"boardId": 6, "date": "2016-01-20T02:48:43.331Z", "id": 57, "text": "Item 7"},
-    {"boardId": 6, "date": "2016-01-20T02:48:43.331Z", "id": 57, "text": "Item 8"},
-    {"boardId": 6, "date": "2016-01-20T02:48:43.331Z", "id": 57, "text": "Item 9"},
-    {"boardId": 6, "date": "2016-01-20T02:48:43.331Z", "id": 57, "text": "Item 10"},
-  ]);
-  }
-else {
-    res.json([
-      {"boardId": 6, "date": "2016-01-20T02:48:43.331Z", "id": 57, "text": "Item 10"},
-      {"boardId": 6, "date": "2016-01-20T02:48:43.331Z", "id": 57, "text": "Item 11"},
-      {"boardId": 6, "date": "2016-01-20T02:48:43.331Z", "id": 57, "text": "Item 12"},
-      {"boardId": 6, "date": "2016-01-20T02:48:43.331Z", "id": 57, "text": "Item 13"},
-      {"boardId": 6, "date": "2016-01-20T02:48:43.331Z", "id": 57, "text": "Item 14"},
-      {"boardId": 6, "date": "2016-01-20T02:48:43.331Z", "id": 57, "text": "Item 15"},
-      {"boardId": 6, "date": "2016-01-20T02:48:43.331Z", "id": 57, "text": "Item 16"},
-      {"boardId": 6, "date": "2016-01-20T02:48:43.331Z", "id": 57, "text": "Item 17"},
-    ]);
 
-};
+exports.index = function(req, topLevelRes) {
+  var username = process.env.kanban_now_services_apiKey_id;
+  var password = process.env.kanban_now_services_apiKey_secret;
+  var serviceBaseUrl = process.env.archive_card_service_base_url;
+
+  var stormpathUserId = req.param('stormpathUserId');
+  var url = serviceBaseUrl + '/archivedCards/' + stormpathUserId;
+
+  var options = {
+    url: url,
+    qs: { pageNumber: req.param('pageNumber'), pageSize: 10 },
+    auth: {
+      user: username,
+      password: password
+    }
+  }
+
+  request(options, function (err, res, body) {
+    if (err) {
+      console.dir(err);
+      return;
+    }
+    var x = JSON.parse(body);
+    console.dir('headers', res.headers);
+    console.dir('status code', res.statusCode);
+    console.dir(body);
+    console.dir('data=' , x.data);
+    // return res.send(200, x.data);
+    topLevelRes.json(x);
+  })
+
 };
 

@@ -14,6 +14,11 @@ task writeCloudFoundryManifest(type: Copy) {
             stormpath_apiKey_id: "$System.env.stormpath_apiKey_id",
             stormpath_apiKey_secret: "$System.env.stormpath_apiKey_secret",
             stormpath_application_href: "$System.env.stormpath_application_href",
+
+            kanban_now_services_apiKey_id: "$System.env.kanban_now_services_apiKey_id",
+            kanban_now_services_apiKey_secret: "$System.env.kanban_now_services_apiKey_secret",
+            archive_card_service_base_url: "$System.env.archive_card_service_base_url",
+
             deployment_environment: "$System.env.deployment_environment",
             security_user_password: "$System.env.security_user_password"
     ])
