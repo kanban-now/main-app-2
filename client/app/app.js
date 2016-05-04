@@ -7,7 +7,8 @@ angular.module('dashboardApp', [
   'ngTable',
   'ui.router',
   'stormpath',
-  'stormpath.templates'
+  'stormpath.templates',
+  'dndLists'
 ])
   .config(function ($stateProvider, $urlRouterProvider, $locationProvider) {
     $urlRouterProvider
