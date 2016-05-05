@@ -28,3 +28,15 @@
     margin-top: 70px;
     border-top: 1px solid #E5E5E5;
 }
+
+.laneContents {
+    background-color: #ECE8E0;
+    border-color: #ECE8E0 #ECE8E0 #ECE8E0 #5BADE9;
+    border-left: 1px solid #5BADE9;
+    border-right: 1px dotted #ECE8E0;
+    border-style: solid dotted solid solid;
+    border-width: 1px;
+    margin: 2px 0 0;
+    min-height: 104px;
+    padding: 0;
+}

@@ -23,6 +23,61 @@
 
 <div class="simpleDemo row">
 
+
+  <div id="top-level1" style="width: 2000px; height: 375px" >
+    <div id="on-deck" style="width: 600px; height: 350px; display: inline; float: left" >
+      <ul id="column-1" style="height: 318px; cursor: default;" class="laneContents connectedSortable"  >
+        <!--#foreach( $vrefNextCard in $vrefCardList )-->
+        <!--#card( $vrefNextCard )-->
+        <!--#end-->
+      </ul>
+    </div>
+
+    <div id="in-progress" style="width: 600px; height: 350px; display: inline; float: left" >
+      <ul id="column-2" style="height: 318px; cursor: default;" class="laneContents connectedSortable"  >
+        <!--#foreach( $vrefNextCard in $vrefCardList )-->
+        <!--#card( $vrefNextCard )-->
+        <!--#end-->
+      </ul>
+    </div>
+
+    <div id="done" style="width: 600px; height: 350px; display: inline; float: left" >
+      <ul id="column-3" style="height: 318px; cursor: default;" class="laneContents connectedSortable"  >
+        <!--#foreach( $vrefNextCard in $vrefCardList )-->
+        <!--#card( $vrefNextCard )-->
+        <!--#end-->
+      </ul>
+    </div>
+  </div>
+
+  <div id="top-level2" style="width: 2000px; height: 375px" >
+    <div id="on-deck2" style="width: 600px; height: 350px; display: inline; float: left" >
+      <ul id="column-4" style="height: 318px; cursor: default;" class="laneContents connectedSortable"  >
+        <!--#foreach( $vrefNextCard in $vrefCardList )-->
+        <!--#card( $vrefNextCard )-->
+        <!--#end-->
+      </ul>
+    </div>
+
+    <div id="in-progress2" style="width: 600px; height: 350px; display: inline; float: left" >
+      <ul id="column-5" style="height: 318px; cursor: default;" class="laneContents connectedSortable"  >
+        <!--#foreach( $vrefNextCard in $vrefCardList )-->
+        <!--#card( $vrefNextCard )-->
+        <!--#end-->
+      </ul>
+    </div>
+
+    <div id="done2" style="width: 600px; height: 350px; display: inline; float: left" >
+      <ul id="column-6" style="height: 318px; cursor: default;" class="laneContents connectedSortable"  >
+        <!--#foreach( $vrefNextCard in $vrefCardList )-->
+        <!--#card( $vrefNextCard )-->
+        <!--#end-->
+      </ul>
+    </div>
+  </div>
+
+
+
   <div class="col-md-8">
     <div class="row">
       <div ng-repeat="(listName, list) in models.lists" class="col-md-6">
