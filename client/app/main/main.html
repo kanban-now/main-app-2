@@ -26,26 +26,50 @@
 
   <div id="top-level1" style="width: 2000px; height: 375px" >
     <div id="on-deck" style="width: 600px; height: 350px; display: inline; float: left" >
-      <ul id="column-1" style="height: 318px; cursor: default;" class="laneContents connectedSortable"  >
-        <!--#foreach( $vrefNextCard in $vrefCardList )-->
-        <!--#card( $vrefNextCard )-->
-        <!--#end-->
+      <ul dnd-list="models.lists.A" id="column-1" style="height: 318px; cursor: default;" class="laneContents connectedSortable"  >
+
+        <li ng-repeat="item in models.lists.A"
+            dnd-draggable="item"
+            dnd-moved="models.lists.A.splice($index, 1)"
+            dnd-effect-allowed="move"
+            dnd-selected="models.selected = item"
+            ng-class="{'selected': models.selected === item}"
+        >
+          {{item.label}}
+        </li>
+
       </ul>
     </div>
 
     <div id="in-progress" style="width: 600px; height: 350px; display: inline; float: left" >
-      <ul id="column-2" style="height: 318px; cursor: default;" class="laneContents connectedSortable"  >
-        <!--#foreach( $vrefNextCard in $vrefCardList )-->
-        <!--#card( $vrefNextCard )-->
-        <!--#end-->
+      <ul dnd-list="models.lists.B" id="column-2" style="height: 318px; cursor: default;" class="laneContents connectedSortable"  >
+
+        <li ng-repeat="item in models.lists.B"
+            dnd-draggable="item"
+            dnd-moved="models.lists.B.splice($index, 1)"
+            dnd-effect-allowed="move"
+            dnd-selected="models.selected = item"
+            ng-class="{'selected': models.selected === item}"
+        >
+          {{item.label}}
+        </li>
+
       </ul>
     </div>
 
     <div id="done" style="width: 600px; height: 350px; display: inline; float: left" >
-      <ul id="column-3" style="height: 318px; cursor: default;" class="laneContents connectedSortable"  >
-        <!--#foreach( $vrefNextCard in $vrefCardList )-->
-        <!--#card( $vrefNextCard )-->
-        <!--#end-->
+      <ul dnd-list="models.lists.C" id="column-3" style="height: 318px; cursor: default;" class="laneContents connectedSortable"  >
+
+        <li ng-repeat="item in models.lists.C"
+            dnd-draggable="item"
+            dnd-moved="models.lists.C.splice($index, 1)"
+            dnd-effect-allowed="move"
+            dnd-selected="models.selected = item"
+            ng-class="{'selected': models.selected === item}"
+        >
+          {{item.label}}
+        </li>
+
       </ul>
     </div>
   </div>
