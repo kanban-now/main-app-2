@@ -6,6 +6,9 @@ angular.module('dashboardApp')
       .state('advanced', {
         url: '/advanced',
         templateUrl: 'app/advanced/advanced.html',
-        controller: 'AdvancedCtrl'
+        controller: 'AdvancedCtrl',
+          sp: {
+              authenticate: true
+          }
       });
   });
