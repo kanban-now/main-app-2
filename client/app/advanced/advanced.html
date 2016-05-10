@@ -15,7 +15,6 @@
                 dnd-dragover="dragoverCallback(event, index, external, type)"
                 dnd-drop="dropCallback(event, index, item, external, type, 'containerType')">
                 <li ng-repeat="items in containers"
-                    dnd-draggable="items"
                     dnd-type="'containerType'"
                     dnd-effect-allowed="copyMove"
                     dnd-moved="containers.splice($index, 1)">
