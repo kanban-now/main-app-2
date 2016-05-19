@@ -13,6 +13,7 @@ module.exports = function(app) {
   // Insert routes below
   app.use('/api/things', ExpressStormpath.loginRequired, require('./api/thing'));
   app.use('/api/archivedcards', ExpressStormpath.loginRequired, require('./api/archivedcards'));
+  app.use('/api/cards', ExpressStormpath.loginRequired, require('./api/cards'));
   
   // All undefined asset or api routes should return a 404
   app.route('/:url(api|auth|components|app|bower_components|assets)/*')

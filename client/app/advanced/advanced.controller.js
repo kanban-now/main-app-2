@@ -45,17 +45,59 @@ angular.module('dashboardApp')
 
       $scope.model = [];
 
-      // Initialize model
+
       var id = 10;
-      for (var i = 0; i < 3; ++i) {
-          $scope.model.push([]);
-          for (var j = 0; j < 2; ++j) {
-              $scope.model[i].push([]);
-              for (var k = 0; k < 7; ++k) {
-                  $scope.model[i][j].push({label: 'Item ' + id++});
-              }
+      $scope.model.push([]);
+
+      $scope.model[0].push([]);
+      $scope.model[0][0].push({label: 'Item ' + id++});
+      $scope.model[0][0].push({label: 'Item ' + id++});
+      $scope.model[0][0].push({label: 'Item ' + id++});
+      $scope.model[0][0].push({label: 'Top left'});
+      $http.get('/api/cards').success(function(cards) {
+
+          var arrayLength = cards.length;
+          for (var i = 0; i < arrayLength; i++) {
+              // alert(myStringArray[i]);
+              //Do something
+              var nextItem = cards[i]
+              $scope.model[0][0].push({label: nextItem.name});
           }
-      }
+
+      });
+
+
+      $scope.model[0].push([]);
+      $scope.model[0][1].push({label: 'Item ' + id++});
+      $scope.model[0][1].push({label: 'Item ' + id++});
+      $scope.model[0][1].push({label: 'Bottom left'});
+
+
+      $scope.model.push([]);
+
+      $scope.model[1].push([]);
+      $scope.model[1][0].push({label: 'Item ' + id++});
+      $scope.model[1][0].push({label: 'Item ' + id++});
+      $scope.model[1][0].push({label: 'Item ' + id++});
+      $scope.model[1][0].push({label: 'Top middle'});
+
+      $scope.model[1].push([]);
+      $scope.model[1][1].push({label: 'Item ' + id++});
+      $scope.model[1][1].push({label: 'Item ' + id++});
+      $scope.model[1][1].push({label: 'Bottom middle'});
+
+      $scope.model.push([]);
+
+      $scope.model[2].push([]);
+      $scope.model[2][0].push({label: 'Item ' + id++});
+      $scope.model[2][0].push({label: 'Item ' + id++});
+      $scope.model[2][0].push({label: 'Item ' + id++});
+      $scope.model[2][0].push({label: 'Top right'});
+
+      $scope.model[2].push([]);
+      $scope.model[2][1].push({label: 'Item ' + id++});
+      $scope.model[2][1].push({label: 'Bottom right'});
+
 
       $scope.$watch('model', function(model) {
           $scope.modelAsJson = angular.toJson(model, true);
