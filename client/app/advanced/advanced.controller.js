@@ -50,20 +50,12 @@ angular.module('dashboardApp')
       $scope.model.push([]);
 
       $scope.model[0].push([]);
-      $scope.model[0][0].push({label: 'Item ' + id++});
-      $scope.model[0][0].push({label: 'Item ' + id++});
-      $scope.model[0][0].push({label: 'Item ' + id++});
-      $scope.model[0][0].push({label: 'Top left'});
-      $http.get('/api/cards').success(function(cards) {
-
+      $http.get('/api/cards?location=1').success(function(cards) {
           var arrayLength = cards.length;
           for (var i = 0; i < arrayLength; i++) {
-              // alert(myStringArray[i]);
-              //Do something
               var nextItem = cards[i]
-              $scope.model[0][0].push({label: nextItem.name});
+              $scope.model[0][0].push({label: nextItem.cardText});
           }
-
       });
 
 
@@ -76,10 +68,18 @@ angular.module('dashboardApp')
       $scope.model.push([]);
 
       $scope.model[1].push([]);
-      $scope.model[1][0].push({label: 'Item ' + id++});
-      $scope.model[1][0].push({label: 'Item ' + id++});
-      $scope.model[1][0].push({label: 'Item ' + id++});
-      $scope.model[1][0].push({label: 'Top middle'});
+      // $scope.model[1][0].push({label: 'Item ' + id++});
+      // $scope.model[1][0].push({label: 'Item ' + id++});
+      // $scope.model[1][0].push({label: 'Item ' + id++});
+      // $scope.model[1][0].push({label: 'Top middle'});
+      $http.get('/api/cards?location=2').success(function(cards) {
+          var arrayLength = cards.length;
+          for (var i = 0; i < arrayLength; i++) {
+              var nextItem = cards[i]
+              $scope.model[1][0].push({label: nextItem.cardText});
+          }
+      });
+
 
       $scope.model[1].push([]);
       $scope.model[1][1].push({label: 'Item ' + id++});
