@@ -14,10 +14,13 @@ var _ = require('lodash');
 
 var location1Cards = [
   {
+    cardId: 1,
     cardText: 'TL 1',
   }, {
+    cardId: 2,
     cardText: 'TL 2',
   }, {
+    cardId: 3,
     cardText: 'TL 3x',
   }
 ];
@@ -25,10 +28,13 @@ var location1Cards = [
 
 var location2Cards = [
   {
+    cardId: 4,
     cardText: 'TM 1',
   }, {
+    cardId: 5,
     cardText: 'TM 2',
   }, {
+    cardId: 6,
     cardText: 'TM 3',
   }
 ];

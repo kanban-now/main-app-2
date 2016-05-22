@@ -29,8 +29,36 @@ angular.module('dashboardApp')
               if (allowedType === 'itemType' && !item.label) return false;
               if (allowedType === 'containerType' && !angular.isArray(item)) return false;
           }
+
+          // hard code drag to on deck 1 for now
+          var destination = 1
+
+          var url = '/api/cards/' + item.cardId + '/move/' + destination;
+          // $http.post(url).success(function(cards) {
+          //     var arrayLength = cards.length;
+          //     for (var i = 0; i < arrayLength; i++) {
+          //         var nextItem = cards[i]
+          //         $scope.model[0][0].push({label: nextItem.cardText});
+          //     }
+          // });
+
+          $http.post(url)
+              .then(
+                  function(response){
+                      // success callback
+                      console.log('Post:' + url + ': succeeded');
+                  },
+                  function(response){
+                      // failure callback
+                      console.log('Post:' + url + ': failed.  response:' + response);
+                  }
+              );
+
+
           return item;
+
       };
+
 
       // $scope.logEvent = function(message, event) {
       //     console.log('message:', message, '(triggered by the following', event.type, 'event)');
@@ -54,7 +82,7 @@ angular.module('dashboardApp')
           var arrayLength = cards.length;
           for (var i = 0; i < arrayLength; i++) {
               var nextItem = cards[i]
-              $scope.model[0][0].push({label: nextItem.cardText});
+              $scope.model[0][0].push({cardText: nextItem.cardText, cardId: nextItem.cardId});
           }
       });
 
@@ -68,15 +96,11 @@ angular.module('dashboardApp')
       $scope.model.push([]);
 
       $scope.model[1].push([]);
-      // $scope.model[1][0].push({label: 'Item ' + id++});
-      // $scope.model[1][0].push({label: 'Item ' + id++});
-      // $scope.model[1][0].push({label: 'Item ' + id++});
-      // $scope.model[1][0].push({label: 'Top middle'});
       $http.get('/api/cards?location=2').success(function(cards) {
           var arrayLength = cards.length;
           for (var i = 0; i < arrayLength; i++) {
               var nextItem = cards[i]
-              $scope.model[1][0].push({label: nextItem.cardText});
+              $scope.model[1][0].push({cardText: nextItem.cardText, cardId: nextItem.cardId});
           }
       });
 
