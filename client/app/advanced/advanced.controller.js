@@ -34,13 +34,6 @@ angular.module('dashboardApp')
           var destination = 1
 
           var url = '/api/cards/' + item.cardId + '/move/' + destination;
-          // $http.post(url).success(function(cards) {
-          //     var arrayLength = cards.length;
-          //     for (var i = 0; i < arrayLength; i++) {
-          //         var nextItem = cards[i]
-          //         $scope.model[0][0].push({label: nextItem.cardText});
-          //     }
-          // });
 
           $http.post(url)
               .then(
