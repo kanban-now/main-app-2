@@ -7,4 +7,6 @@ var router = express.Router();
 
 router.get('/', controller.index);
 
+router.post('/:cardId/move/:destination', controller.handleMove);
+
 module.exports = router;
