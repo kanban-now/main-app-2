@@ -37,7 +37,6 @@
                                 dnd-dragend="logEvent('Drag operation ended', event)"
                                 id={{item.cardId}}>
                                 {{item.cardText}}
-
                             </li>
                         </ul>
                         <div class="clearfix"></div>
@@ -79,7 +78,6 @@
                                 dnd-dragend="logEvent('Drag operation ended', event)"
                                 id={{item.cardId}}>
                                 {{item.cardText}}
-
                             </li>
                         </ul>
                         <div class="clearfix"></div>
@@ -118,8 +116,9 @@
                                 dnd-moved="items.splice($index, 1); logEvent('Item moved', event)"
                                 dnd-copied="logEvent('Item copied', event)"
                                 dnd-canceled="logEvent('Drag operation canceled', event)"
-                                dnd-dragend="logEvent('Drag operation ended', event)">
-                                {{item.label}}
+                                dnd-dragend="logEvent('Drag operation ended', event)"
+                                id={{item.cardId}}>
+                                {{item.cardText}}
                             </li>
                         </ul>
                         <div class="clearfix"></div>

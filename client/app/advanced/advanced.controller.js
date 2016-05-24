@@ -53,19 +53,7 @@ angular.module('dashboardApp')
       };
 
 
-      // $scope.logEvent = function(message, event) {
-      //     console.log('message:', message, '(triggered by the following', event.type, 'event)');
-      //     console.log('event:', event);
-      // };
-      //
-      // $scope.logListEvent = function(action, event, index, external, type) {
-      //     var message = external ? 'External ' : '';
-      //     message += type + ' element is ' + action + ' position ' + index;
-      //     $scope.logEvent(message, event);
-      // };
-
       $scope.model = [];
-
 
       var id = 10;
       $scope.model.push([]);
@@ -81,9 +69,14 @@ angular.module('dashboardApp')
 
 
       $scope.model[0].push([]);
-      $scope.model[0][1].push({label: 'Item ' + id++});
-      $scope.model[0][1].push({label: 'Item ' + id++});
-      $scope.model[0][1].push({label: 'Bottom left'});
+      $http.get('/api/cards?location=4').success(function(cards) {
+          var arrayLength = cards.length;
+          for (var i = 0; i < arrayLength; i++) {
+              var nextItem = cards[i]
+              $scope.model[0][1].push({cardText: nextItem.cardText, cardId: nextItem.cardId});
+          }
+      });
+
 
 
       $scope.model.push([]);
@@ -99,21 +92,36 @@ angular.module('dashboardApp')
 
 
       $scope.model[1].push([]);
-      $scope.model[1][1].push({label: 'Item ' + id++});
-      $scope.model[1][1].push({label: 'Item ' + id++});
-      $scope.model[1][1].push({label: 'Bottom middle'});
+      $http.get('/api/cards?location=5').success(function(cards) {
+          var arrayLength = cards.length;
+          for (var i = 0; i < arrayLength; i++) {
+              var nextItem = cards[i]
+              $scope.model[1][1].push({cardText: nextItem.cardText, cardId: nextItem.cardId});
+          }
+      });
+
 
       $scope.model.push([]);
 
       $scope.model[2].push([]);
-      $scope.model[2][0].push({label: 'Item ' + id++});
-      $scope.model[2][0].push({label: 'Item ' + id++});
-      $scope.model[2][0].push({label: 'Item ' + id++});
-      $scope.model[2][0].push({label: 'Top right'});
+      $http.get('/api/cards?location=3').success(function(cards) {
+          var arrayLength = cards.length;
+          for (var i = 0; i < arrayLength; i++) {
+              var nextItem = cards[i]
+              $scope.model[2][0].push({cardText: nextItem.cardText, cardId: nextItem.cardId});
+          }
+      });
+
 
       $scope.model[2].push([]);
-      $scope.model[2][1].push({label: 'Item ' + id++});
-      $scope.model[2][1].push({label: 'Bottom right'});
+      $http.get('/api/cards?location=6').success(function(cards) {
+          var arrayLength = cards.length;
+          for (var i = 0; i < arrayLength; i++) {
+              var nextItem = cards[i]
+              $scope.model[2][1].push({cardText: nextItem.cardText, cardId: nextItem.cardId});
+          }
+      });
+
 
 
       $scope.$watch('model', function(model) {

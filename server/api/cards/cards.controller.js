@@ -25,6 +25,7 @@ var cardList = [
     cardText: 'TL 3x',
     location: 1
   },
+
   {
     cardId: 4,
     cardText: 'TM 1',
@@ -37,7 +38,65 @@ var cardList = [
     cardId: 6,
     cardText: 'TM 3',
     location: 2
-  }
+  },
+
+  {
+    cardId: 7,
+    cardText: 'TR 1',
+    location: 3
+  }, {
+    cardId: 8,
+    cardText: 'TR 2',
+    location: 3
+  }, {
+    cardId: 9,
+    cardText: 'TR 3',
+    location: 3
+  },
+
+  {
+    cardId: 10,
+    cardText: 'BL 1',
+    location: 4
+  }, {
+    cardId: 11,
+    cardText: 'BL 2',
+    location: 4
+  }, {
+    cardId: 12,
+    cardText: 'BL 3',
+    location: 4
+  },
+
+  {
+    cardId: 13,
+    cardText: 'BM 1',
+    location: 5
+  }, {
+    cardId: 14,
+    cardText: 'BM 2',
+    location: 5
+  }, {
+    cardId: 15,
+    cardText: 'BM 3',
+    location: 5
+  },
+
+  {
+    cardId: 16,
+    cardText: 'BR 1',
+    location: 6
+  }, {
+    cardId: 17,
+    cardText: 'BR 2',
+    location: 6
+  }, {
+    cardId: 18,
+    cardText: 'BR 3',
+    location: 6
+  },
+
+
 
 ];
 
@@ -84,6 +143,23 @@ exports.index = function(req, res) {
     var cardsAtLocation = getCardsAtLocation(2);
     res.json(cardsAtLocation);
   }
+  if (location === '3') {
+    var cardsAtLocation = getCardsAtLocation(3);
+    res.json(cardsAtLocation);
+  }
+  if (location === '4') {
+    var cardsAtLocation = getCardsAtLocation(4);
+    res.json(cardsAtLocation);
+  }
+  if (location === '5') {
+    var cardsAtLocation = getCardsAtLocation(5);
+    res.json(cardsAtLocation);
+  }
+  if (location === '6') {
+    var cardsAtLocation = getCardsAtLocation(6);
+    res.json(cardsAtLocation);
+  }
+
 
 };
 
