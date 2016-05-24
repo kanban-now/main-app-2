@@ -31,7 +31,8 @@ angular.module('dashboardApp')
           }
 
           // hard code drag to on deck 1 for now
-          var destination = 1
+          // var destination = 1
+          var destination = parseInt(event.target.id);
 
           var url = '/api/cards/' + item.cardId + '/move/' + destination;
 
