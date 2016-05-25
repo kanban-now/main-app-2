@@ -30,8 +30,7 @@ angular.module('dashboardApp')
               if (allowedType === 'containerType' && !angular.isArray(item)) return false;
           }
 
-          // hard code drag to on deck 1 for now
-          var destination = 1
+          var destination = parseInt(event.currentTarget.id);
 
           var url = '/api/cards/' + item.cardId + '/move/' + destination;
 

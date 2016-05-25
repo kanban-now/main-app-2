@@ -6,19 +6,13 @@
 <div class="advancedDemo row">
     <div class="col-md-4">
         <div class="dropzone box box-yellow" >
-            <h3>Dropzone 1</h3>
-            <ul dnd-list="model[0]"
-                dnd-allowed-types="['containerType']"
-                dnd-external-sources="true"
-                dnd-dragover="dragoverCallback(event, index, external, type)"
-                dnd-drop="dropCallback(event, index, item, external, type, 'containerType')">
-                <li ng-repeat="items in model[0]"
-                    dnd-type="'containerType'"
-                    dnd-effect-allowed="copyMove"
-                    dnd-moved="model[0].splice($index, 1)">
+            <h3>On Deck</h3>
+            <ul>
+                <li>
                     <div class="container-element box box-blue">
-                        <h3>Container</h3>
-                        <ul dnd-list="items"
+                        <h3>Location 1</h3>
+                        <ul id="1"
+                            dnd-list="model[0][0]"
                             dnd-allowed-types="['itemType']"
                             dnd-horizontal-list="true"
                             dnd-external-sources="true"
@@ -26,12 +20,12 @@
                             dnd-drop="dropCallback(event, index, item, external, type, 'itemType')"
                             dnd-inserted="logEvent('Element was inserted at position ' + index, event)"
                             class="itemlist">
-                            <li ng-repeat="item in items"
+                            <li ng-repeat="item in model[0][0]"
                                 dnd-draggable="item"
                                 dnd-type="'itemType'"
                                 dnd-effect-allowed="copyMove"
                                 dnd-dragstart="logEvent('Started to drag an item', event)"
-                                dnd-moved="items.splice($index, 1); logEvent('Item moved', event)"
+                                dnd-moved="model[0][0].splice($index, 1); logEvent('Item moved', event)"
                                 dnd-copied="logEvent('Item copied', event)"
                                 dnd-canceled="logEvent('Drag operation canceled', event)"
                                 dnd-dragend="logEvent('Drag operation ended', event)"
@@ -42,24 +36,12 @@
                         <div class="clearfix"></div>
                     </div>
                 </li>
-            </ul>
-        </div>
-    </div>
-    <div class="col-md-4">
-        <div class="dropzone box box-yellow" >
-            <h3>Dropzone 2</h3>
-            <ul dnd-list="model[1]"
-                dnd-allowed-types="['containerType']"
-                dnd-external-sources="true"
-                dnd-dragover="dragoverCallback(event, index, external, type)"
-                dnd-drop="dropCallback(event, index, item, external, type, 'containerType')">
-                <li ng-repeat="items in model[1]"
-                    dnd-type="'containerType'"
-                    dnd-effect-allowed="copyMove"
-                    dnd-moved="model[1].splice($index, 1)">
+
+                <li>
                     <div class="container-element box box-blue">
-                        <h3>Container</h3>
-                        <ul dnd-list="items"
+                        <h3>Location 4</h3>
+                        <ul id="4"
+                            dnd-list="model[0][1]"
                             dnd-allowed-types="['itemType']"
                             dnd-horizontal-list="true"
                             dnd-external-sources="true"
@@ -67,12 +49,12 @@
                             dnd-drop="dropCallback(event, index, item, external, type, 'itemType')"
                             dnd-inserted="logEvent('Element was inserted at position ' + index, event)"
                             class="itemlist">
-                            <li ng-repeat="item in items"
+                            <li ng-repeat="item in model[0][1]"
                                 dnd-draggable="item"
                                 dnd-type="'itemType'"
                                 dnd-effect-allowed="copyMove"
                                 dnd-dragstart="logEvent('Started to drag an item', event)"
-                                dnd-moved="items.splice($index, 1); logEvent('Item moved', event)"
+                                dnd-moved="model[0][1].splice($index, 1); logEvent('Item moved', event)"
                                 dnd-copied="logEvent('Item copied', event)"
                                 dnd-canceled="logEvent('Drag operation canceled', event)"
                                 dnd-dragend="logEvent('Drag operation ended', event)"
@@ -83,51 +65,143 @@
                         <div class="clearfix"></div>
                     </div>
                 </li>
-            </ul>
-        </div>
-    </div>
-    <div class="col-md-4">
-        <div class="dropzone box box-yellow" >
-            <h3>Dropzone 3</h3>
-            <ul dnd-list="model[2]"
-                dnd-allowed-types="['containerType']"
-                dnd-external-sources="true"
-                dnd-dragover="dragoverCallback(event, index, external, type)"
-                dnd-drop="dropCallback(event, index, item, external, type, 'containerType')">
-                <li ng-repeat="items in model[2]"
-                    dnd-type="'containerType'"
-                    dnd-effect-allowed="copyMove"
-                    dnd-moved="model[2].splice($index, 1)">
-                    <div class="container-element box box-blue">
-                        <h3>Container</h3>
-                        <ul dnd-list="items"
-                            dnd-allowed-types="['itemType']"
-                            dnd-horizontal-list="true"
-                            dnd-external-sources="true"
-                            dnd-dragover="dragoverCallback(event, index, external, type)"
-                            dnd-drop="dropCallback(event, index, item, external, type, 'itemType')"
-                            dnd-inserted="logEvent('Element was inserted at position ' + index, event)"
-                            class="itemlist">
-                            <li ng-repeat="item in items"
-                                dnd-draggable="item"
-                                dnd-type="'itemType'"
-                                dnd-effect-allowed="copyMove"
-                                dnd-dragstart="logEvent('Started to drag an item', event)"
-                                dnd-moved="items.splice($index, 1); logEvent('Item moved', event)"
-                                dnd-copied="logEvent('Item copied', event)"
-                                dnd-canceled="logEvent('Drag operation canceled', event)"
-                                dnd-dragend="logEvent('Drag operation ended', event)"
-                                id={{item.cardId}}>
-                                {{item.cardText}}
-                            </li>
-                        </ul>
-                        <div class="clearfix"></div>
-                    </div>
-                </li>
+
             </ul>
         </div>
     </div>
 
+    <div class="col-md-4">
+        <div class="dropzone box box-yellow" >
+            <h3>In Progress</h3>
+            <ul>
+                <li>
+                    <div class="container-element box box-blue">
+                        <h3>Location 2</h3>
+                        <ul id="2"
+                            dnd-list="model[1][0]"
+                            dnd-allowed-types="['itemType']"
+                            dnd-horizontal-list="true"
+                            dnd-external-sources="true"
+                            dnd-dragover="dragoverCallback(event, index, external, type)"
+                            dnd-drop="dropCallback(event, index, item, external, type, 'itemType')"
+                            dnd-inserted="logEvent('Element was inserted at position ' + index, event)"
+                            class="itemlist">
+                            <li ng-repeat="item in model[1][0]"
+                                dnd-draggable="item"
+                                dnd-type="'itemType'"
+                                dnd-effect-allowed="copyMove"
+                                dnd-dragstart="logEvent('Started to drag an item', event)"
+                                dnd-moved="model[1][0].splice($index, 1); logEvent('Item moved', event)"
+                                dnd-copied="logEvent('Item copied', event)"
+                                dnd-canceled="logEvent('Drag operation canceled', event)"
+                                dnd-dragend="logEvent('Drag operation ended', event)"
+                                id={{item.cardId}}>
+                                {{item.cardText}}
+                            </li>
+                        </ul>
+                        <div class="clearfix"></div>
+                    </div>
+                </li>
+
+                <li>
+                    <div class="container-element box box-blue">
+                        <h3>Location 5</h3>
+                        <ul id="5"
+                            dnd-list="model[1][1]"
+                            dnd-allowed-types="['itemType']"
+                            dnd-horizontal-list="true"
+                            dnd-external-sources="true"
+                            dnd-dragover="dragoverCallback(event, index, external, type)"
+                            dnd-drop="dropCallback(event, index, item, external, type, 'itemType')"
+                            dnd-inserted="logEvent('Element was inserted at position ' + index, event)"
+                            class="itemlist">
+                            <li ng-repeat="item in model[1][1]"
+                                dnd-draggable="item"
+                                dnd-type="'itemType'"
+                                dnd-effect-allowed="copyMove"
+                                dnd-dragstart="logEvent('Started to drag an item', event)"
+                                dnd-moved="model[1][1].splice($index, 1); logEvent('Item moved', event)"
+                                dnd-copied="logEvent('Item copied', event)"
+                                dnd-canceled="logEvent('Drag operation canceled', event)"
+                                dnd-dragend="logEvent('Drag operation ended', event)"
+                                id={{item.cardId}}>
+                                {{item.cardText}}
+                            </li>
+                        </ul>
+                        <div class="clearfix"></div>
+                    </div>
+                </li>
+
+            </ul>
+        </div>
+    </div>
+    
+
+    <div class="col-md-4">
+        <div class="dropzone box box-yellow" >
+            <h3>Done</h3>
+            <ul>
+                <li>
+                    <div class="container-element box box-blue">
+                        <h3>Location 3</h3>
+                        <ul id="3"
+                            dnd-list="model[2][0]"
+                            dnd-allowed-types="['itemType']"
+                            dnd-horizontal-list="true"
+                            dnd-external-sources="true"
+                            dnd-dragover="dragoverCallback(event, index, external, type)"
+                            dnd-drop="dropCallback(event, index, item, external, type, 'itemType')"
+                            dnd-inserted="logEvent('Element was inserted at position ' + index, event)"
+                            class="itemlist">
+                            <li ng-repeat="item in model[2][0]"
+                                dnd-draggable="item"
+                                dnd-type="'itemType'"
+                                dnd-effect-allowed="copyMove"
+                                dnd-dragstart="logEvent('Started to drag an item', event)"
+                                dnd-moved="model[2][0].splice($index, 1); logEvent('Item moved', event)"
+                                dnd-copied="logEvent('Item copied', event)"
+                                dnd-canceled="logEvent('Drag operation canceled', event)"
+                                dnd-dragend="logEvent('Drag operation ended', event)"
+                                id={{item.cardId}}>
+                                {{item.cardText}}
+                            </li>
+                        </ul>
+                        <div class="clearfix"></div>
+                    </div>
+                </li>
+
+                <li>
+                    <div class="container-element box box-blue">
+                        <h3>Location 6</h3>
+                        <ul id="6"
+                            dnd-list="model[2][1]"
+                            dnd-allowed-types="['itemType']"
+                            dnd-horizontal-list="true"
+                            dnd-external-sources="true"
+                            dnd-dragover="dragoverCallback(event, index, external, type)"
+                            dnd-drop="dropCallback(event, index, item, external, type, 'itemType')"
+                            dnd-inserted="logEvent('Element was inserted at position ' + index, event)"
+                            class="itemlist">
+                            <li ng-repeat="item in model[2][1]"
+                                dnd-draggable="item"
+                                dnd-type="'itemType'"
+                                dnd-effect-allowed="copyMove"
+                                dnd-dragstart="logEvent('Started to drag an item', event)"
+                                dnd-moved="model[2][1].splice($index, 1); logEvent('Item moved', event)"
+                                dnd-copied="logEvent('Item copied', event)"
+                                dnd-canceled="logEvent('Drag operation canceled', event)"
+                                dnd-dragend="logEvent('Drag operation ended', event)"
+                                id={{item.cardId}}>
+                                {{item.cardText}}
+                            </li>
+                        </ul>
+                        <div class="clearfix"></div>
+                    </div>
+                </li>
+
+            </ul>
+        </div>
+    </div>
 
 
     </div>
